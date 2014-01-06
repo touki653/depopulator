@@ -1,6 +1,6 @@
 {
-    "name": "touki/populator",
-    "description": "A simple Array-to-Object library",
+    "name": "touki/depopulator",
+    "description": "A simple Object-to-Array library",
     "license": "MIT",
     "authors": [
         {
