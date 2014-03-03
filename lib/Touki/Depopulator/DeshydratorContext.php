@@ -21,7 +21,6 @@ class DeshydratorContext
      */
     protected $properties = array();
 
-
     /**
      * {@inheritDoc}
      */
@@ -55,11 +54,11 @@ class DeshydratorContext
      */
     public function getProperty($name)
     {
-        foreach ($this->properties as $property) {
-            if ($name === $property->getName()) {
-                return $property;
-            }
+        if (!isset($this->properties[$name])) {
+            return;
         }
+
+        return $this->properties[$name];
     }
 
     /**
@@ -69,6 +68,20 @@ class DeshydratorContext
      */
     public function addProperty(PropertyMetadata $property)
     {
-        $this->properties[] = $property;
+        $this->properties[$property->getName()] = $property;
+    }
+
+    /**
+     * Removes a property
+     *
+     * @param string $name Property name
+     */
+    public function removeProperty($name)
+    {
+        if (!isset($this->properties[$name])) {
+            return;
+        }
+
+        unset($this->properties[$name]);
     }
 }
